@@ -1,35 +1,37 @@
-const baseUrl = 'https://jsonplaceholder.typicode.com';
+
+const baseUrl = 'https://rickandmortyapi.com/api';
 
 $('#boton').click(() => {
-    const list = $('#lista');
-    list.empty();
+    const tableBody = $('#tabla tbody');
+    tableBody.empty();
 
-    $.get(`${baseUrl}/users`, (data) => {
-        data.forEach(amigo => {
-            list.append(`<li id=${amigo.id}>${`${amigo.id} - ${amigo.name}`}</li>`);
+    $.get(`${baseUrl}/character`, (data) => {
+        console.log(data.results);
+        data.results.forEach(amigo => {
+            tableBody.append(`
+                <tr id="${amigo.id}">
+                    <td>${amigo.id}</td>
+                    <td>${amigo.name}</td>
+                    <td>${amigo.status}</td>
+                    <td>${amigo.species}</td>
+                    <td><img class="thumbnail" src="${amigo.image}" alt="${amigo.name}"></td>
+                </tr>
+            `);
         });
-    })
-})
+    });
+});
+
 
 $('#search').click(() => {
-    let id = $('#input').val();
-    $.get(`${baseUrl}/users/${id}`, (data) => {
+    const id = $('#input').val();
+    $.get(`${baseUrl}/character/${id}`, (data) => {
         $('#amigo').text(data.name);
     })
 })
 
 $('#delete').click(() => {
-    let id = $('#inputDelete').val();
+    const id = $('#inputDelete').val();
     $(`#${id}`).remove();
     $('#success').text(`Friend with id ${id} deleted successfully.`);
 
-    // $.ajax({
-    //     type: 'delete',
-    //     url: `${baseUrl}/users/${id}`,
-    //     success: (data) => {
-    //         $('#success').text(`Friend with id ${id} deleted successfully.`);
-    //         $('#boton').click();
-
-    //     }
-    // })
 }); 
