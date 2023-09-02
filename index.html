@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<title>My Friends Page</title>
+	<link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+	<header>
+		<h1>My Friends List</h1>
+	</header>
+
+	<section class="amigos-section">
+		<button id="boton">Show friends</button>
+		<ul id="lista"></ul>
+	</section>
+
+	<section class="buscar-amigo-section">
+		<h2>Search friends</h2>
+		<hr>
+		<input id="input" type="text" placeholder="Friend ID">
+		<button id="search">Search</button>
+		<span id="amigo"></span>
+	</section>
+
+	<section class="eliminar-amigo-section">
+		<hr>
+		<input id="inputDelete" type="text" placeholder="ID of the friend to delete">
+		<button id="delete">Remove</button>
+		<span id="success"></span>
+	</section>
+
+	<footer>
+		<p>&copy; 2023 My Friends Page</p>
+	</footer>
+
+	<script src="scripts/index.js"></script>
+</body>
+
+</html>
