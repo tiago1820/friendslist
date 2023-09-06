@@ -1,11 +1,10 @@
+import { BASE_URL } from "../main";
 
-const baseUrl = 'https://rickandmortyapi.com/api';
-
-$('#boton').click(() => {
+export const showFriends = () => {
     const tableBody = $('#tabla tbody');
     tableBody.empty();
 
-    $.get(`${baseUrl}/character`, (data) => {
+    $.get(`${BASE_URL}/character`, (data) => {
         console.log(data.results);
         data.results.forEach(amigo => {
             tableBody.append(`
@@ -19,19 +18,5 @@ $('#boton').click(() => {
             `);
         });
     });
-});
+}
 
-
-$('#search').click(() => {
-    const id = $('#input').val();
-    $.get(`${baseUrl}/character/${id}`, (data) => {
-        $('#amigo').text(data.name);
-    })
-})
-
-$('#delete').click(() => {
-    const id = $('#inputDelete').val();
-    $(`#${id}`).remove();
-    $('#success').text(`Friend with id ${id} deleted successfully.`);
-
-}); 
